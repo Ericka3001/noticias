@@ -1,0 +1,14 @@
+Ent tab1.page.html :   Eliminar todo el ion-content de tab1 / volver el fondo oscuro  
+En tabs.page.html : volver oscura la barra de tabs
+Para desplegar las noticias ver :
+
+tab1.page.ts   
+
+En tabs.page.html : incorporar un grid  para desplegar las noticias que seran recorridas
+con un ngfor y desplegadas en un card 
+
+todo lo demas es mejorar la visualización
+
+
+revisar el global scss para ver las clases utilizadas
+
