@@ -16,7 +16,7 @@ export class Tab1Page implements OnInit {
     //llamamos el servicio
     this.noticiasService.getTopHeadLines().
       subscribe(resp =>{
-        console.log ('noticias',resp)
+        console.log ('noticias',resp) // visualizar los datos en la consola  
       });
 
   }
