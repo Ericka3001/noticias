@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonSegment } from '@ionic/angular';
 import { NoticiasService } from '../../services/noticias.service';
-
+import { Article } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab2',
@@ -16,6 +16,7 @@ export class Tab2Page implements OnInit{
    //https://newsapi.org/docs/endpoints/top-headlines  seccción category
    // que serán utilizadas con un *ngFor para los botones de la cabecera
   categorias=['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'];
+  noticias: Article[] = [];    // para desplegar en el html
 
   constructor( private noticiasService: NoticiasService) {}
 
@@ -24,12 +25,21 @@ export class Tab2Page implements OnInit{
     this.cargarNoticias( this.categorias[0] );
   }
 
-cargarNoticias( categoria: string, event? ) {
 
-    this.noticiasService.getTopHeadlinesCategoria( categoria )
+cargarNoticias( categoria: string, event? ) {
+    this.noticiasService.getTopHeadlinesCategoria( categoria )  //
           .subscribe( resp => {
              console.log("Categoría:   ",resp);     // en este punto resp no tiene tipo para eso trabajar en el service
-            
+             this.noticias.push( ...resp.articles );  // ... es el operador spread pueden buscar para mayor infor
+             // ahora falta desplegar noticias en el html para eso usar los componentes 
           });
+  }
+
+  cambioCategoria( event ) {
+
+    this.noticias = [];   // para que cuando hay cambio de categoria no se haga push y se carguen solo las noticias categoria
+                          // pueden probar sin esto
+    this.cargarNoticias( event.detail.value );
+
   }
 }

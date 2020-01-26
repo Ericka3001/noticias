@@ -4,7 +4,11 @@
       Encabezados
     </ion-title>
   </ion-toolbar>
-  <ion-segment scrollable mode="md" color="primary">  <! --habilitar el scroll-->
+  <! --habilitar el scroll-->
+  <ion-segment scrollable 
+              mode="md" 
+               color="primary"
+               (ionChange)="cambioCategoria( $event )">    <! --para captuar el cambio en el ion segment(cambio en la categoria)->
     <ion-segment-button mode="md" 
                         *ngFor="let categoria of categorias"
                         [value]="categoria">
@@ -15,4 +19,6 @@
   </ion-segment>
 </ion-header>
 <ion-content color="dark">
+    <app-noticias [noticias]="noticias"></app-noticias>     <! --falta la selección que esta en el .ts-->
+
 </ion-content>
