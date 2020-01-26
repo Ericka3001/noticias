@@ -16,17 +16,34 @@ export class Tab1Page implements OnInit {
   }
   
   ngOnInit() {
-    //llamamos el servicio
-    this.noticiasService.getTopHeadLines().
-      subscribe(resp =>{
-        console.log ('noticias',resp) // visualizar los datos en la consola  
-       // this.noticias=resp.articles ;  
-       //eventualmente se trae mas información y no se desea sobreescribir los artículos
+    this.cargarNoticias();
+  }
 
-        // los 3 puntos se usan para que se trabaje de forma independiente
-        // cada elemento del arreglo que será desplegado en el HTML 
-        this.noticias.push( ...resp.articles ); 
+  loadData( event ) {
+
+    console.log(event);
+    this.cargarNoticias( event );
+  }
+
+  // el signo de interrogación por argumento opcional
+  cargarNoticias( event? ) {
+    this.noticiasService.getTopHeadLines()
+      .subscribe( resp => {
+        console.log('noticias x', resp );
+
+        if ( resp.articles.length === 0 ) {    //cuando es 0 se debe cancelar el infinite scroll
+          event.target.disabled = true;
+          event.target.complete();
+          return;
+        }
+
+        // this.noticias = resp.articles;
+        this.noticias.push( ...resp.articles );
+
+        if ( event ) {
+          event.target.complete();
+        }
+
       });
-
   }
 }
