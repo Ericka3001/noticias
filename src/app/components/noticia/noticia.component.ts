@@ -1,0 +1,17 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { Article } from 'src/app/interfaces/interfaces';
+
+@Component({
+  selector: 'app-noticia',
+  templateUrl: './noticia.component.html',
+  styleUrls: ['./noticia.component.scss'],
+})
+export class NoticiaComponent implements OnInit {
+
+  @Input() noticia:Article;    // para el html
+  @Input() indice: number;    // este será desplegado en el html
+  constructor() { }
+
+  ngOnInit() {}
+
+}
