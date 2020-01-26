@@ -23,11 +23,15 @@ export class Tab2Page implements OnInit{
   }
 
 cargarNoticias( categoria: string, event? ) {
-    this.noticiasService.getTopHeadlinesCategoria( categoria )  
+         
+          this.noticiasService.getTopHeadlinesCategoria( categoria )
           .subscribe( resp => {
-             console.log("Categoría:   ",resp);     
-             this.noticias.push( ...resp.articles );  // ... es el operador spread pueden buscar para mayor infor
-             // ahora falta desplegar noticias en el html para eso usar los componentes 
+            console.log("Categoría:   ",resp); 
+            this.noticias.push( ...resp.articles );
+
+            if ( event ) {
+              event.target.complete();
+            }
           });
   }
 
@@ -37,4 +41,13 @@ cargarNoticias( categoria: string, event? ) {
     this.cargarNoticias( event.detail.value );
 
   }
+  loadData( event ) {
+     // en el segment.value del html tenemos la categoría
+     // para llamar a cargarNoticias
+     console.log("Categoría:   ", this.segment.value); 
+    this.cargarNoticias( this.segment.value, event );
+    
+  }
+
+
 }

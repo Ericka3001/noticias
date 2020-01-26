@@ -17,16 +17,16 @@ const headers = new HttpHeaders({
 })
 export class NoticiasService {
   headlinesPage = 0;
+  categoriaActual = '';
+  categoriaPage = 0;
 
   constructor(private http: HttpClient) { }
 
   private ejecutarQuery<T>( query: string ) {
-   // función para armar el argumento del get
+   
     query = apiUrl + query;
     return this.http.get<T>( query, { headers } );
-    // esta <T> permite que la función sea genérica
-    // recibe cualquier tipo dato y retorna el tipo de dato recibido
-    // por eso es posible que en la llamada permanezca el observable
+    
   }
 
   getTopHeadLines(){
@@ -37,10 +37,17 @@ export class NoticiasService {
   }
 
   getTopHeadlinesCategoria( categoria: string ) {  
-// como sería la petición sin armar
- // return this.http.get(`https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=c7ceb570e18b45debb640f3c0defe1d1`);
 
- return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&category=${ categoria }`);  // category es el argumento recibido = business/ etc
+      // verificar si seguimos en la misma categoría
+      if ( this.categoriaActual === categoria ) {  
+           this.categoriaPage++;
+      } else {
+              this.categoriaPage = 1;
+            this.categoriaActual = categoria;
+      }
+// return this.http.get(`https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=c7ceb570e18b45debb640f3c0defe1d1`);
+ return this.ejecutarQuery<RespuestaTopHeadlines>(`/top-headlines?country=us&category=${ categoria }`);  
+ // category es el argumento recibido = business/ etc
   }
 
 }
