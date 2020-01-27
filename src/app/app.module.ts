@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';  // para hacer peticiones http
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';   // para llamar al navegador por defecto
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';  // para hacer peticion
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
