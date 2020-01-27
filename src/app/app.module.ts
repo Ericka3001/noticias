@@ -11,7 +11,11 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';  // para hacer peticiones http
 
+
+// Plugins instalados
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';   // para llamar al navegador por defecto
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';   // para compartir en redes sociales
+
 
 
 @NgModule({
@@ -22,6 +26,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';   // para llama
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
