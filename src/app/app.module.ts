@@ -16,17 +16,21 @@ import { HttpClientModule } from '@angular/common/http';  // para hacer peticion
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';   // para llamar al navegador por defecto
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';   // para compartir en redes sociales
 
+import { IonicStorageModule } from '@ionic/storage';
+
+
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
     InAppBrowser,
     SocialSharing,
+    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
