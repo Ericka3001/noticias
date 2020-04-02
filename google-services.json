@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1005840129491",
+    "firebase_url": "https://noticias-440c0.firebaseio.com",
+    "project_id": "noticias-440c0",
+    "storage_bucket": "noticias-440c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005840129491:android:a77994bbe25aa0c73fe326",
+        "android_client_info": {
+          "package_name": "io.fcm.noticias"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005840129491-tecbd5ad79ae4ne1qllstp7oig6mmtmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAYWRlRVNyGNv8wf9vdb-Zfb89a1fiMus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005840129491-tecbd5ad79ae4ne1qllstp7oig6mmtmb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
